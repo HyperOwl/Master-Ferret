@@ -10,9 +10,9 @@ namespace Master_Ferret.Modules
     public class echo : ModuleBase<SocketCommandContext>
     {
         [Command("echo")]
-        public async Task echoAsync([Remainder]string message)
+        public async Task echoAsync([Remainder]string message,bool tts)
         {
-                await Context.Channel.SendMessageAsync(message);
+                await Context.Channel.SendMessageAsync(message,tts);
         }
     }
 }
