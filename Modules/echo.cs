@@ -10,9 +10,19 @@ namespace Master_Ferret.Modules
     public class echo : ModuleBase<SocketCommandContext>
     {
         [Command("echo")]
-        public async Task echoAsync([Remainder]string message,bool tts)
+        public async Task echoAsync([Remainder]string message)
         {
-                await Context.Channel.SendMessageAsync(message,tts);
-        }
+            string[] SplitArray = message.Split(new char[] { ' ' },StringSplitOptions.RemoveEmptyEntries);
+            List<string> split = SplitArray.ToList();
+            if (split[0] == "tts")
+            {
+                split.RemoveAt(0);
+                await Context.Channel.SendMessageAsync(string.Concat(split), true);
+            }
+            else
+            {
+                await Context.Channel.SendMessageAsync(message);
+            }
+            }
     }
 }
