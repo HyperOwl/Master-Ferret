@@ -52,7 +52,7 @@ namespace Master_Ferret
         private async Task HandleCommandAsync(SocketMessage arg)
         {
             var message = arg as SocketUserMessage;
-            if (message == null || message.Author.IsBot) return;
+            if (message == null) return;
             int argPos = 0;
             if (message.HasStringPrefix("ferret!", ref argPos) || message.HasMentionPrefix(client.CurrentUser, ref argPos))
             {
