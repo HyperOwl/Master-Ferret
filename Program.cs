@@ -56,12 +56,21 @@ namespace Master_Ferret
             int argPos = 0;
             if (message.HasStringPrefix("ferret!", ref argPos) || message.HasMentionPrefix(client.CurrentUser, ref argPos))
             {
-                //Console.WriteLine(message.Channel); Debug
+                
                 var context = new SocketCommandContext(client, message);
-                var result = await commands.ExecuteAsync(context, argPos, services);
-                if (!result.IsSuccess)
+                //Console.WriteLine(context.Channel); //Debug
+                if (context.Channel.Name == "bot-spam" || context.Channel.Name == "master-ferret")
                 {
-                    Console.WriteLine(result.ErrorReason);
+                    var result = await commands.ExecuteAsync(context, argPos, services);
+                    if (!result.IsSuccess)
+                    {
+                        Console.WriteLine(result.ErrorReason);
+                    }
+                }
+                else
+                {
+                    await context.Channel.SendMessageAsync(@"This command can only be executed in the ""bot spam"" channel");
+                    return;
                 }
             } 
         }

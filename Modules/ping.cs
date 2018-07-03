@@ -11,8 +11,8 @@ namespace Master_Ferret.Modules
     {
         [Command("ping")]
         public async Task pingAsync()
-        {
-            await ReplyAsync("pong");
+        { 
+                await ReplyAsync("pong");
         }
     }
 }
