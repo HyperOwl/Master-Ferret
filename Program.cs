@@ -54,7 +54,7 @@ namespace Master_Ferret
             var message = arg as SocketUserMessage;
             if (message == null) return;
             int argPos = 0;
-            if (message.HasStringPrefix("ferret!", ref argPos) || message.HasMentionPrefix(client.CurrentUser, ref argPos))
+            if (message.HasStringPrefix("ofb!", ref argPos) || message.HasMentionPrefix(client.CurrentUser, ref argPos))
             {
                 
                 var context = new SocketCommandContext(client, message);
