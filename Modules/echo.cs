@@ -12,12 +12,12 @@ namespace Master_Ferret.Modules
         [Command("echo")]
         public async Task echoAsync([Remainder]string message)
         {
-            string[] SplitArray = message.Split(new char[] { ' ' },StringSplitOptions.RemoveEmptyEntries);
+            string[] SplitArray = message.Split(new char[] { ' ' });
             List<string> split = SplitArray.ToList();
             if (split[0] == "tts")
             {
                 split.RemoveAt(0);
-                await Context.Channel.SendMessageAsync(string.Concat(split), true);
+                await Context.Channel.SendMessageAsync(string.Join(" ",split), true);
             }
             else
             {
